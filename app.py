@@ -96,6 +96,12 @@ def home():
         filtered_trending = [s for s in trending if (s['scheme_id'] in filtered_schemes)]
     return render_template('index.html', schemes=filtered_schemes, trending=filtered_trending, user_name=user_name, query=query, categories=categories, selected_category=selected_category)
 
+
+@app.route('/health')
+def health():
+    """Simple health endpoint used by uptime monitors."""
+    return jsonify({"status": "ok"}), 200
+
 # --- Scheme detail page ---
 @app.route('/scheme/<scheme_id>')
 @login_required
