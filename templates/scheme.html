@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ scheme.name }} - Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .scheme-header {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .scheme-name {
+            font-size: 2em;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .scheme-category {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+        .scheme-amount {
+            color: #27ae60;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .scheme-description {
+            line-height: 1.6;
+            color: #34495e;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #3498db;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .access-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+        .flash { color: #27ae60; text-align: center; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scheme-header">
+            <h1 class="scheme-name">{{ scheme.name }}</h1>
+            <div class="scheme-category">Category: {{ scheme.category }}</div>
+            <div class="scheme-amount">Min. Amount: ₹{{ scheme.min_amount }}</div>
+        </div>
+        
+        <div class="scheme-description">
+            <p>{{ scheme.description }}</p>
+        </div>
+        
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="flash">{{ messages[0] }}</div>
+          {% endif %}
+        {% endwith %}
+        
+        <div style="margin-top: 30px;">
+            {% if accessed %}
+            <button type="button" class="access-btn" style="background:black; color:white; border:none; border-radius:5px; padding:10px 22px;">Accessed</button>
+            {% else %}
+            <form method="POST" action="/scheme/{{ scheme_id }}/access" style="display:inline;">
+                <button type="submit" class="access-btn" style="background:#27ae60; color:white; border:none; border-radius:5px; padding:10px 22px;">Access</button>
+            </form>
+            {% endif %}
+            {% if scheme.url %}
+            <a href="{{ scheme.url }}" target="_blank" style="margin-left:15px; color:#2980b9; font-weight:bold;">Go to Official Site</a>
+            {% endif %}
+        </div>
+        
+        <a href="/" class="back-link">← Back to All Schemes</a>
+    </div>
+</body>
+</html> 
