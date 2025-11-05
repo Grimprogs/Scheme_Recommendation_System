@@ -53,23 +53,33 @@
 
 ---
 
-### Animation, 3D & UI/UX toolkit
+### 3D & animation showcase
 
-I love making interfaces feel alive — smooth motion, micro-interactions and immersive 3D when it fits the user story. Tools & libraries I use:
+<p align="center">
+  <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="3D demo" width="680"/>
+</p>
 
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
-![GSAP](https://img.shields.io/badge/GSAP-29ABE2?style=for-the-badge&logo=greensock&logoColor=white)
-![Lottie](https://img.shields.io/badge/Lottie-LottieFiles-FF6A00?style=for-the-badge&logo=lottiefiles&logoColor=white)
-![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
 
-Tips for adding animation/3D to your projects:
-- Use Lottie for lightweight vector animations that scale well in apps and web.
-- Host interactive demos (Three.js) on a small static site and link/embed screenshots here.
-- Prefer transforms and GPU-accelerated properties for smooth motion (translateZ, transform, opacity).
+### Projects
 
-You can turn these into a little animated strip by hosting small GIFs or using SVG icons — this is a simple, reliable start.
+- [Scheme Recommendation System](https://github.com/Grimprogs/Scheme_Recommendation_System) — Flask + Neo4j demo for recommending social schemes.
+- (Add other project links here)
+
+
+### GitHub Stats
+
+![Your GitHub stats](https://github-readme-stats.vercel.app/api?username=Grimprogs&show_icons=true&theme=default)
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Grimprogs&layout=compact)
 
 ---
+
+### Contact
+
+- Twitter: [@yourhandle](https://twitter.com/yourhandle)
+- LinkedIn: [Your Name](https://www.linkedin.com/in/yourprofile)
+- Email: your.email@example.com
+
 
 ### Projects
 
