@@ -5,9 +5,14 @@
   - Edit the placeholders (YOUR_NAME, YOUR_USERNAME) and links below.
 -->
 
-# Hi, I’m Grimprogs 
+# Hi — I’m Anurag (Grimprogs)
 
-![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&color=000000&center=true&vCenter=true&width=700&height=60&lines=hey+develps+Anurag+here+%2F+peace+%2F+love)
+![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=28&pause=1000&color=000000&center=true&vCenter=true&width=760&height=60&lines=hey,+developer+Anurag+here+%E2%9C%8C+%2F+peace+%2F+love)
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Platane/snk/master/static/wave.gif" alt="wave" width="48"/>&nbsp;&nbsp;
+  <strong style="font-size:1.05em">Hey — developer Anurag here — building delightful UI/UX, animations and 3D experiences.</strong>
+</p>
 
 ---
 
@@ -43,7 +48,24 @@
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
+
 <!-- You can reorder or remove badges as you prefer. -->
+
+---
+
+### Animation, 3D & UI/UX toolkit
+
+I love making interfaces feel alive — smooth motion, micro-interactions and immersive 3D when it fits the user story. Tools & libraries I use:
+
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-29ABE2?style=for-the-badge&logo=greensock&logoColor=white)
+![Lottie](https://img.shields.io/badge/Lottie-LottieFiles-FF6A00?style=for-the-badge&logo=lottiefiles&logoColor=white)
+![Blender](https://img.shields.io/badge/Blender-F5792A?style=for-the-badge&logo=blender&logoColor=white)
+
+Tips for adding animation/3D to your projects:
+- Use Lottie for lightweight vector animations that scale well in apps and web.
+- Host interactive demos (Three.js) on a small static site and link/embed screenshots here.
+- Prefer transforms and GPU-accelerated properties for smooth motion (translateZ, transform, opacity).
 
 You can turn these into a little animated strip by hosting small GIFs or using SVG icons — this is a simple, reliable start.
 
