@@ -71,7 +71,6 @@ class Neo4jConnector:
         """
         if parameters is None:
             parameters = {}
-
         last_exc = None
         # If driver wasn't created yet, try to create it lazily without strict verification
         if self.driver is None:
@@ -87,15 +86,23 @@ class Neo4jConnector:
                     # consume the result while the session is open and return a list
                     return list(result)
             except ServiceUnavailable as exc:
-                # Do not raise to the web layer; log and return empty result so
-                # the application can continue to serve pages when the DB is
-                # temporarily unreachable. Retry a few times first.
+                # Retry a few times on service availability issues
                 last_exc = exc
                 print("Warning: Neo4j ServiceUnavailable (attempt", attempt, "):", exc)
                 if attempt < attempts:
                     time.sleep(backoff * attempt)
                     continue
-                # Final failure: return empty list rather than raising an exception
+                return []
+            except Exception as exc:
+                # Catch-all: avoid letting driver/socket errors bubble to the
+                # web layer and crash Gunicorn workers. Log and retry a
+                # few times; on final failure return an empty result so the
+                # application can continue serving pages.
+                last_exc = exc
+                print("Warning: Neo4j exception (attempt", attempt, "):", type(exc).__name__, str(exc))
+                if attempt < attempts:
+                    time.sleep(backoff * attempt)
+                    continue
                 return []
 
     def upsert_scheme(self, scheme_id, scheme_data):
