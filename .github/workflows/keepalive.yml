@@ -9,7 +9,7 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping app URL
+      - name: Ping app URL (with marker)
         env:
           APP_URL: ${{ secrets.APP_URL }}
         run: |
@@ -17,6 +17,18 @@ jobs:
             echo "Repository secret APP_URL is not set. Set it in Settings → Secrets → Actions."
             exit 0
           fi
-          echo "Pinging $APP_URL"
-          # Use curl but don't fail the workflow on non-2xx so we don't spam failures
-          curl -fsS "$APP_URL" || echo "Ping failed (non-2xx or network error)"
+          # Basic validation: must start with http:// or https://
+          if [[ ! "$APP_URL" =~ ^https?:// ]]; then
+            echo "APP_URL appears malformed (must start with http:// or https://): '$APP_URL'" >&2
+            exit 1
+          fi
+          MARKED_URL="$APP_URL/health?gh_action_keepalive=1"
+          echo "Pinging $MARKED_URL"
+          # Use a header so Render logs clearly identify this as the GitHub Actions keep-alive
+          HTTP_CODE=$(curl -sS -o /dev/null -w "%{http_code}" -H "X-Keepalive: github-actions" "$MARKED_URL" ) || true
+          if [[ "$HTTP_CODE" -ge 200 && "$HTTP_CODE" -lt 300 ]]; then
+            echo "Ping OK: $HTTP_CODE"
+          else
+            echo "Ping failed: $HTTP_CODE" >&2
+            # Do not fail the entire workflow on a transient non-2xx; just surface the code
+          fi
